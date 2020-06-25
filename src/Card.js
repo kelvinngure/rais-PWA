@@ -1,14 +1,22 @@
 import React from "react"
 import "./App.css"
+import countryContext from "./Context"
 
 const Card = (props) => {
     return(
-        <div className = "Card">
-            <p className= "Country">country: kenya</p>
-            <p className= "Country">capital: kenya</p>
-            <p className= "Country">population: kenya</p>
-            <p className= "Country">region: kenya</p>
-        </div>
+        <countryContext.Consumer>
+            {state => state.state.country ? // state.state.country
+                <div className = "Card">
+                    <p className= "Country">country: {state.state.country.name}</p>
+                    <p className= "Country">capital: {state.state.country.capital}</p>
+                    <p className= "Country">population: {state.state.country.population}</p>
+                    <p className= "Country">region: {state.state.country.region}</p>
+                </div> :
+                <p>explore</p>
+
+            }
+            
+        </countryContext.Consumer>
     )
 }
 

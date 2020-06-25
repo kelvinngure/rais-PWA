@@ -18,15 +18,21 @@ const Search = () => {
         e.preventDefault();
         const url = `https://restcountries.eu/rest/v2/name/${search}`
         const response = await fetch(url)
-        const jsoned = await response.json()
-        //console.log(jsoned[0]) // put contingency for status 404
-        const country = {
-            "name": `${jsoned[0].name}`,
-            "capital": `${jsoned[0].capital}`,
-            "population": `${jsoned[0].population}`,
-            "region": `${jsoned[0].region}`,
+        console.log(response)
+        if (response.ok){   
+            const jsoned = await response.json()
+            //console.log(jsoned[0]) // put contingency for status 404
+            const country = {
+                "name": `${jsoned[0].name}`,
+                "capital": `${jsoned[0].capital}`,
+                "population": `${jsoned[0].population}`,
+                "region": `${jsoned[0].region}`,
+            }
+            dispatch({type: "display", payload: country})
         }
-        dispatch({type: "display", payload: country})
+        else{
+            dispatch({type: "display", payload: null})
+        }
 
     }
 
