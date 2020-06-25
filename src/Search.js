@@ -1,37 +1,36 @@
 import React, {useState} from "react"
 import "./App.css"
 
-const Updater = async(e) => {
-    // handle updating the dropdown options
-    // handle enter key
-    if (e.key === "Enter"){
-        console.log("enter")
-    }
-    else{  
-        const searchTerm = e.target.value
-        console.log(searchTerm)
-    }
-    // const url = `https://restcountries.eu/rest/v2/name/${searchTerm}`
-
-    // const response = await fetch(url)
-    // const jsoned = await response.json()
-    // console.log(jsoned)
-}
-
-
-const Sender = (e) => {
-
-}
-
 
 const Search = () => {
 
     const [search, setSearch] = useState("search for a country...")
 
+    const Updater = (e) => {
+        setSearch(e.target.value)
+        
+    }
+    
+    
+    const Sender = async(e) => {
+        e.preventDefault();
+        console.log(search)
+        const url = `https://restcountries.eu/rest/v2/name/${search}`
+        const response = await fetch(url)
+        const jsoned = await response.json()
+        console.log(jsoned[0]) // put contingency for status 404
+
+    }
+
     return(
         <div className = "Search">
             <p> Explore </p>
-            <input id = "countrySearch" value = {search} className = "searchBox" onKeyDown = {Updater}/>
+
+            <form  onSubmit = {(e) => Sender(e)}>
+                <input id = "countrySearch" value = {search} onFocus={(e) => e.target.value = ""} 
+                className = "searchBox" onChange = {(e) => Updater(e)}/>
+            </form>
+            
         </div>
     )
 }
