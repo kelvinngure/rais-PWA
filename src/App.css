@@ -52,6 +52,7 @@
   height: 300px;
   padding-top: 30;
   padding-bottom: 30;
+  background-color: red;
 }
 
 @keyframes App-logo-spin {

@@ -1,10 +1,13 @@
 import React from "react"
 import "./App.css"
 
-const Card = () => {
+const Card = (props) => {
     return(
         <div className = "Card">
-            <p>Card</p>
+            <p className= "Country">country: kenya</p>
+            <p className= "Country">capital: kenya</p>
+            <p className= "Country">population: kenya</p>
+            <p className= "Country">region: kenya</p>
         </div>
     )
 }
