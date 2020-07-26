@@ -10,7 +10,7 @@ const Card = (props) => {
                     <p className= "Country">country: {state.state.country.name}</p>
                     <p className= "Country">capital: {state.state.country.capital}</p>
                     <p className= "Country">population: {state.state.country.population}</p>
-                    <p className= "Country">region: {state.state.country.region}</p>
+                    <p className= "Country">region: {state.state.country.region} </p>
                 </div> :
                 <p>explore</p>
 
